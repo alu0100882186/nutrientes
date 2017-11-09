@@ -67,10 +67,10 @@ describe GrupoAlimento do
         end
         
         it "Pertenencia a una jerarquía." do
-            expect(@grup_leche.is_a?Alimentos).to eq(false)
-            expect(@grup_leche.is_a?GrupoAlimento).to eq(true)
-            expect(@@lechevaca.is_a?GrupoAlimento).to eq(false)
-            expect(GrupoAlimento.is_a?Alimentos).to eq(true)
+            expect(@leche_grupo.is_a?Alimentos).to eq(true)
+            expect(@leche_grupo.is_a?GrupoAlimento).to eq(true)
+            expect(@lechevaca.is_a?GrupoAlimento).to eq(false)
+            expect(GrupoAlimento.is_a?Alimentos).to eq(false)
             expect(GrupoAlimento.is_a?Object).to eq(true)
         end
             
@@ -83,6 +83,7 @@ describe GrupoAlimento do
             expect(@leche_grupo.glucidos).to eq(4.8)
             expect(@leche_grupo.grasas).to eq(3.2)
         end
+        
         it "Prueba salida formateada subclase GrupoAlimento" do
             expect(@leche_grupo.to_s).to eq ("Lacteos\n\t\t\tProteinas\tLipidos\t\tGrasas\nLeche vaca\t\t3.3\t\t4.8\t\t3.2")
         end 
