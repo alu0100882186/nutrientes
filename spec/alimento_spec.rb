@@ -95,4 +95,12 @@ describe GrupoAlimento do
             expect(@leche_grupo.to_s).to eq ("Lacteos\n\t\t\tProteinas\tLipidos\t\tGrasas\nLeche vaca\t\t3.3\t\t4.8\t\t3.2")
         end 
     end
+    
+    describe "Comprobacion de la clase nodo" do
+        it "Comprobacion de que contiene siguiente, previo y valor" do
+        expect(@NodoInicial.value).to eq(@leche_grupo)
+        expect(@NodoInicial.next).to eq(@yogurt_grupo)
+        expect(@NodoInicial.prev).to eq(@huevo_frito_grupo)
+        end
+    end
 end
