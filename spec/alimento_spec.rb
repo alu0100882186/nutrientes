@@ -55,6 +55,27 @@ describe GrupoAlimento do
         end
     end
     
+    describe "Pruebas para comprobar la clase de un objeto, tipo de un objeto y jerarquía de un objeto" do
+        
+        it "Clase de un objeto" do
+            expect(@leche_grupo.class).to eq(GrupoAlimento)
+            expect(@lechevaca.class).to eq(Alimentos)
+        end
+        
+        it "Tipo de un objeto" do 
+                
+        end
+        
+        it "Pertenencia a una jerarquía." do
+            expect(@grup_leche.is_a?Alimentos).to eq(false)
+            expect(@grup_leche.is_a?GrupoAlimento).to eq(true)
+            expect(@@lechevaca.is_a?GrupoAlimento).to eq(false)
+            expect(GrupoAlimento.is_a?Alimentos).to eq(true)
+            expect(GrupoAlimento.is_a?Object).to eq(true)
+        end
+            
+    end
+    
     describe "Comprobacion implementacion correcta de la clase" do
         it"Almacenamiento correcto de los atributos de la clase" do
             expect(@leche_grupo.nombre).to eq("Leche vaca")
