@@ -25,7 +25,7 @@ describe GrupoAlimento do
         @cebolla = Alimentos.new("Cebolla", 1.3, 5.8, 0.3)
         @manzana = Alimentos.new("Manzana", 0.3, 12.4, 0.4)
         @platanos = Alimentos.new("Platanos", 1.2, 21.4, 0.2)
-        @grupo = GrupoAlimento.new(@lechevaca,"Lacteos")
+        @leche_grupo = GrupoAlimento.new(@lechevaca,"Lacteos")
     end
     
     describe "Almacenamiento correcto de los alimentos" do
@@ -53,5 +53,17 @@ describe GrupoAlimento do
         it "Se muestra por pantalla correctamente el alimento" do
             expect(@huevo_frito.to_s).to eq ("\t\t\tProteinas\tLipidos\t\tGrasas\nHuevo frito\t\t14.1\t\t0.0\t\t19.5")
         end
+    end
+    
+    describe "Comprobacion implementacion correcta de la clase" do
+        it"Almacenamiento correcto de los atributos de la clase" do
+            expect(@leche_grupo.nombre).to eq("Leche vaca")
+            expect(@leche_grupo.proteinas).to eq(3.3)
+            expect(@leche_grupo.glucidos).to eq(4.8)
+            expect(@leche_grupo.grasas).to eq(3.2)
+        end
+        it "Prueba salida formateada subclase GrupoAlimento" do
+            expect(@leche_grupo.to_s).to eq ("Lacteos\n\t\t\tProteinas\tLipidos\t\tGrasas\nLeche vaca\t\t3.3\t\t4.8\t\t3.2")
+        end 
     end
 end
