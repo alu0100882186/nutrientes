@@ -1,4 +1,5 @@
 require 'lib/alimento/alimento_class'
+require 'lib/alimento/lista'
 
 #require 'spec_helper'
 
@@ -25,7 +26,13 @@ describe GrupoAlimento do
         @cebolla = Alimentos.new("Cebolla", 1.3, 5.8, 0.3)
         @manzana = Alimentos.new("Manzana", 0.3, 12.4, 0.4)
         @platanos = Alimentos.new("Platanos", 1.2, 21.4, 0.2)
+        
         @leche_grupo = GrupoAlimento.new(@lechevaca,"Lacteos")
+        @yogurt_grupo = GrupoAlimento.new(@yogurt,"Lacteos")
+        @huevo_frito_grupo = GrupoAlimento.new(@huevo_frito,"Lacteos")
+        
+        @Lista = List.new()
+        @NodoInicial = Node.new(@leche_grupo, @yogurt_grupo, @huevo_frito_grupo)
     end
     
     describe "Almacenamiento correcto de los alimentos" do
