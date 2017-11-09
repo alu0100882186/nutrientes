@@ -1,5 +1,4 @@
 class Alimentos
-    
     attr_reader :nombre, :proteinas, :glucidos, :grasas
     
     def initialize(nombre, proteinas, glucidos, grasas)
@@ -33,8 +32,12 @@ class Alimentos
     end
 end
 
+
+
+
+
+
 class GrupoAlimento < Alimentos
-   
    attr_reader :grupo
    
     def initialize(alimento, grupo)
