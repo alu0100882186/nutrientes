@@ -1,8 +1,6 @@
-require 'lib/alimento/alimento_class'
-require 'lib/alimento/lista'
-
+require './lib/alimento/alimento_class'
+require './lib/alimento/lista'
 #require 'spec_helper'
-
 
 
 describe GrupoAlimento do
@@ -126,6 +124,7 @@ describe GrupoAlimento do
                 expect(@Lista.extract_beginning).to eq(@huevo_frito_grupo)
                 expect(@Lista.extract_beginning).to eq(@yogurt_grupo)
                 expect(@Lista.extract_end).to eq(@leche_grupo)
+        
         
         end
     end
