@@ -98,9 +98,35 @@ describe GrupoAlimento do
     
     describe "Comprobacion de la clase nodo" do
         it "Comprobacion de que contiene siguiente, previo y valor" do
-        expect(@NodoInicial.value).to eq(@leche_grupo)
-        expect(@NodoInicial.next).to eq(@yogurt_grupo)
-        expect(@NodoInicial.prev).to eq(@huevo_frito_grupo)
+            expect(@NodoInicial.value).to eq(@leche_grupo)
+            expect(@NodoInicial.next).to eq(@yogurt_grupo)
+            expect(@NodoInicial.prev).to eq(@huevo_frito_grupo)
+        end
+    end    
+    describe "Comprobacion de la clase lista" do 
+        it "Pruebas para comprobar que contiene cabeza y cola" do
+            expect(@Lista.inicio).to eq(nil)
+            expect(@Lista.final).to eq(nil)
+        end
+        
+        it "Comprobacion de insercion y extraccion por el principio" do    
+            @Lista.insert_beginning(@leche_grupo)
+            expect(@Lista.extract_beginning).to eq(@leche_grupo)
+        end    
+        
+        it "Comprobacion de insercion y extraccion por el final" do    
+            @Lista.insert_beginning(@leche_grupo)
+            expect(@Lista.extract_end).to eq(@leche_grupo)
+        end  
+        
+        it "Comprobacion insertar varios elementos" do 
+            @Lista.insert_beginning(@leche_grupo)
+            @Lista.insert_beginning(@yogurt_grupo)
+            @Lista.insert_beginning(@huevo_frito_grupo)
+                expect(@Lista.extract_beginning).to eq(@huevo_frito_grupo)
+                expect(@Lista.extract_beginning).to eq(@yogurt_grupo)
+                expect(@Lista.extract_end).to eq(@leche_grupo)
+        
         end
     end
 end
