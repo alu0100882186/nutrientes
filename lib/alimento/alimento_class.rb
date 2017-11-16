@@ -1,4 +1,7 @@
 class Alimentos
+    
+        include Comparable
+    
     attr_reader :nombre, :proteinas, :glucidos, :grasas
     
     def initialize(nombre, proteinas, glucidos, grasas)
@@ -30,6 +33,12 @@ class Alimentos
         out
         
     end
+    
+    
+    def <=>(other) #Compara dos objetos de la misma jerarquía basandose en la variable calórica vct
+	return nil unless other.is_a? Alimentos
+			return valor_energ <=> other.valor_energ
+	end
 end
 
 

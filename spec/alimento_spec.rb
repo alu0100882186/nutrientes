@@ -128,4 +128,14 @@ describe GrupoAlimento do
         
         end
     end
+    
+    
+    describe "Pruebas para el moduo comparable" do
+        it "Comparacion <=" do
+            expect(@lechevaca <= @platanos).to eq(true)
+        end
+        it "Comparacion >=" do
+            expect(@lechevaca >= @platanos).to eq(false)
+        end
+    end
 end
