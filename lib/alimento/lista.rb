@@ -1,16 +1,29 @@
+# encoding: utf-8
+# Author::    Daniel Díaz García
+# Copyright:: Cretive Commons
+# License::   Distributes under the same terms as Ruby
+
+
+
+
 Node = Struct.new(:value, :next, :prev)
 
 
 class List
 
+
+
+#Esta clase permite crear una lista doblemente
+#enlazada.
+#Se incluyen los mixin comparable y enumerable
   include Enumerable
   
   attr_accessor :inicio, :final
-
+  #Se crea el inicio y el final
 
 
   def extract_beginning
-
+  #Permite extraer por el principio
     aux = @inicio
     @inicio = @inicio.next
     if(@inicio != nil)then
@@ -24,9 +37,9 @@ class List
     return aux.value
 
   end
-
+ #Permite extraer por el final
   def extract_end
-
+ 
     aux = @final
     @final = @final.prev
 
@@ -41,7 +54,7 @@ class List
     return aux.value
 
   end
-#Solo insertas por el final
+  #Permite insertar por el principio
   def insert_beginning(value)
 
   if(@inicio == nil) then
@@ -58,9 +71,9 @@ class List
   return true
 
   end
-
+#Permite insertar por el final
   def insert_end(value)
-
+    
     if(@final == nil) then
         @final = Node.new(value, nil, nil)
         @inicio = @final
@@ -81,7 +94,7 @@ class List
 
 
 
-
+  #comprueba si la lista está vacía
   def empty
 
     if(@inicio == nil) then
@@ -91,8 +104,9 @@ class List
 
   end
 
+#Método para imprimir la lista
   def to_s
-
+  
     string=[]
     aux = @inicio
     i=0
@@ -107,8 +121,7 @@ class List
     return string
   end
 
-  #Al metodo each se le puede pasar un bloque de codigo
-  # y ese bloque se va a colocar en cada campo yield y se ejecutará con los parámetros qe están al lado del yield
+  #Incluye el Enumerable
   def each
   return nil if @inicio.nil?
       aux = @inicio #Creamos un nodo auxiliar
