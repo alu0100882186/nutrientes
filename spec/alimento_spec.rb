@@ -127,6 +127,18 @@ describe GrupoAlimento do
         
         
         end
+        
+        it "comprobacion enumerable" do
+            @Lista.insert_beginning(@leche_grupo)
+            @Lista.insert_beginning(@yogurt_grupo)
+            @Lista.insert_beginning(@huevo_frito_grupo)
+            
+            
+            expect(@Lista.min).to eq(@leche_grupo)
+            expect(@Lista.max).to eq(@huevo_frito)
+            expect(@Lista.sort)
+            expect(@Lista.count).to eq(3)
+        end    
     end
     
     
@@ -136,6 +148,9 @@ describe GrupoAlimento do
         end
         it "Comparacion >=" do
             expect(@lechevaca >= @platanos).to eq(false)
+        end
+        it "Comparacion =" do
+            expect(@lechevaca == @platanos).to eq(false)
         end
     end
 end

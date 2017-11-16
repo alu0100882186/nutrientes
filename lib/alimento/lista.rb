@@ -3,6 +3,8 @@ Node = Struct.new(:value, :next, :prev)
 
 class List
 
+  include Enumerable
+  
   attr_accessor :inicio, :final
 
 
@@ -105,6 +107,15 @@ class List
     return string
   end
 
-
+  #Al metodo each se le puede pasar un bloque de codigo
+  # y ese bloque se va a colocar en cada campo yield y se ejecutará con los parámetros qe están al lado del yield
+  def each
+  return nil if @inicio.nil?
+      aux = @inicio #Creamos un nodo auxiliar
+      until aux.nil? #Y hasta que el nodo no sea nulo
+          yield aux[:value]
+          aux = aux.next
+      end
+  end
 
 end
