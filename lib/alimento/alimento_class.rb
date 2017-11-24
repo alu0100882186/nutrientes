@@ -12,12 +12,13 @@ class Alimentos
     attr_reader :nombre, :proteinas, :glucidos, :grasas
     
     #Se asignan los valores de las variables de instancia
-    def initialize(nombre, proteinas, glucidos, grasas)
+    def initialize(nombre, proteinas, glucidos, grasas, datos=nil)
         
         @nombre = nombre
         @glucidos = glucidos
         @proteinas = proteinas
         @grasas = grasas
+        @datos = datos
         
     end
     #Funcion que devuelve el valor energético de un alimento
@@ -42,6 +43,26 @@ class Alimentos
         out
         
     end
+    
+    def aibc (indice)
+        aux = []
+        @datos[indice][1..@datos[indice].length - 1].zip(@datos[indice][0..@datos[indice].length - 2]) do |x,y|
+            if x < @datos[indice][0]
+                aux << 0.0
+            else
+                aux << (((x-@datos[indice][0])+(y-@datos[indice][0]))/2)*5
+            end 
+        end
+        aux.reduce(:+)
+    end
+    
+    def longitud_datos()
+    
+      @datos.length
+      
+    end
+    
+    
     
     #inclusión del comparable
     def <=>(other) #Compara dos objetos de la misma jerarquía basandose en la variable calórica vct
