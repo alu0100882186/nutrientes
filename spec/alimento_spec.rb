@@ -173,6 +173,7 @@ describe GrupoAlimento do
         it "Se calcula correctamente el indice glucemico de un alimento" do
             aux = (0..@compota.longitud_datos - 1).map { |x| (@compota.aibc(x) / @azucar.aibc(x)) * 100}
             expect(aux.reduce(:+)/@compota.longitud_datos - 1).to eq(51.21619897959183)
+            
         end    
     end
 end
