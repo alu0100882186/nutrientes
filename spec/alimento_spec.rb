@@ -169,7 +169,12 @@ describe "Probando el aibc" do
         expect((@compota.aibc(0) / @azucar.aibc(0)) * 100).to  eq(10.937499999999998)
         expect((@compota.aibc(1) / @azucar.aibc(1)) * 100).to  eq(93.49489795918366)
     end 
+    
+    it "Se calcula correctamente el indice glucemico de un alimento" do
+        aux = (0..@compota.longitud_datos - 1).map { |x| (@compota.aibc(x) / @azucar.aibc(x)) * 100}
         
+        expect(aux.reduce(:+)/@compota.longitud_datos - 1).to eq(51.21619897959183)
+    end    
     
     
     
