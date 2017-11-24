@@ -154,30 +154,25 @@ describe GrupoAlimento do
         end
     end
     
-describe "Probando el aibc" do
-    before :each do
-       @compota = Alimentos.new("Compota manzana", 5.1, 4.3, 2.1, [[6.7,6.5,6.8,6.9,7.0,7.1,6.9,6.9,6.9,6.7,6.9,7.3,7.0,7.0,7.2,7.1,6.8,7.2,7.3,7.0,6.8,6.7,6.8,6.7,6.9],[4.6,4.8,5.3,5.6,6.1,6.5,6.6,7.0,7.0,6.8,6.4,6.3,6.1,6.1,6.2,6.0,6.1,6.1,6.2,6.3,6.4,6.1,6.1,5.7,5.9]] ) 
-       @azucar  = Alimentos.new("Azucar", 0.0, 100, 0.0, [[4.9,5.3,5.9,6.7,7.2,7.6,8.0,8.2,8.2,8.4,8.3,8.3,8.0,7.5,7.1,6.8,6.8,6.9,6.8,6.3,6.2,6.3,6.2,6.3,6.1],[6.3,5.4,5.6,5.7,6.5,7.4,7.9,7.4,7.7,7.9,7.9,7.8,7.8,7.8,8.0,8.5,9.4,10.8,10.5,9.1,8.9,8.3,7.7,7.6,7.5]])
+    describe "Probando el aibc" do
+        before :each do
+            @compota = Alimentos.new("Compota manzana", 5.1, 4.3, 2.1, [[6.7,6.5,6.8,6.9,7.0,7.1,6.9,6.9,6.9,6.7,6.9,7.3,7.0,7.0,7.2,7.1,6.8,7.2,7.3,7.0,6.8,6.7,6.8,6.7,6.9],[4.6,4.8,5.3,5.6,6.1,6.5,6.6,7.0,7.0,6.8,6.4,6.3,6.1,6.1,6.2,6.0,6.1,6.1,6.2,6.3,6.4,6.1,6.1,5.7,5.9]] ) 
+            @azucar  = Alimentos.new("Azucar", 0.0, 100, 0.0, [[4.9,5.3,5.9,6.7,7.2,7.6,8.0,8.2,8.2,8.4,8.3,8.3,8.0,7.5,7.1,6.8,6.8,6.9,6.8,6.3,6.2,6.3,6.2,6.3,6.1],[6.3,5.4,5.6,5.7,6.5,7.4,7.9,7.4,7.7,7.9,7.9,7.8,7.8,7.8,8.0,8.5,9.4,10.8,10.5,9.1,8.9,8.3,7.7,7.6,7.5]])
+        end
+    
+        it "Se calcula el aibc de una persona y un alimento" do
+            expect(@compota.aibc(0)).to eq(27.999999999999993)
+            expect(@azucar.aibc(0)).to eq(255.99999999999997)
+        end
+    
+        it "Se calcula el indice glucemico de un individuo" do
+            expect((@compota.aibc(0) / @azucar.aibc(0)) * 100).to  eq(10.937499999999998)
+            expect((@compota.aibc(1) / @azucar.aibc(1)) * 100).to  eq(93.49489795918366)
+        end 
+    
+        it "Se calcula correctamente el indice glucemico de un alimento" do
+            aux = (0..@compota.longitud_datos - 1).map { |x| (@compota.aibc(x) / @azucar.aibc(x)) * 100}
+            expect(aux.reduce(:+)/@compota.longitud_datos - 1).to eq(51.21619897959183)
+        end    
     end
-    
-    it "Se calcula el aibc de una persona y un alimento" do
-        expect(@compota.aibc(0)).to eq(27.999999999999993)
-        expect(@azucar.aibc(0)).to eq(255.99999999999997)
-    end
-    
-    it "Se calcula el indice glucemico de un individuo" do
-        expect((@compota.aibc(0) / @azucar.aibc(0)) * 100).to  eq(10.937499999999998)
-        expect((@compota.aibc(1) / @azucar.aibc(1)) * 100).to  eq(93.49489795918366)
-    end 
-    
-    it "Se calcula correctamente el indice glucemico de un alimento" do
-        aux = (0..@compota.longitud_datos - 1).map { |x| (@compota.aibc(x) / @azucar.aibc(x)) * 100}
-        
-        expect(aux.reduce(:+)/@compota.longitud_datos - 1).to eq(51.21619897959183)
-    end    
-    
-    
-    
-    
-end
 end

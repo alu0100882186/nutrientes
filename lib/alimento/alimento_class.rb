@@ -44,13 +44,13 @@ class Alimentos
         
     end
     
-    def aibc (indice)
+    def aibc (index)
         aux = []
-        @datos[indice][1..@datos[indice].length - 1].zip(@datos[indice][0..@datos[indice].length - 2]) do |x,y|
-            if x < @datos[indice][0]
+        @datos[index][1..@datos[index].length - 1].zip(@datos[index][0..@datos[index].length - 2]) do |x,y|
+            if x < @datos[index][0]
                 aux << 0.0
             else
-                aux << (((x-@datos[indice][0])+(y-@datos[indice][0]))/2)*5
+                aux << (((x-@datos[index][0])+(y-@datos[index][0]))/2)*5
             end 
         end
         aux.reduce(:+)
