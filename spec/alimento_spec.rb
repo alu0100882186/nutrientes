@@ -33,6 +33,7 @@ describe GrupoAlimento do
         @NodoInicial = Node.new(@leche_grupo, @yogurt_grupo, @huevo_frito_grupo)
     end
     
+    
     describe "Almacenamiento correcto de los alimentos" do
         it "Se almacena correctamente el nombre del alimento" do
             expect(@huevo_frito.nombre).to eq("Huevo frito")     
@@ -151,6 +152,16 @@ describe GrupoAlimento do
         end
         it "Comparacion =" do
             expect(@lechevaca == @platanos).to eq(false)
+        end
+    end
+    
+    describe "Pruebas de ordenación" do 
+        it "prueba de ordenación utilizando benchmark" do
+            array = [@huevo_frito, @lechevaca, @yogurt, @cerdo, @ternera, @pollo, @bacalao, @atun, @salmon, @aceiteoliva, @chocolate, @azucar, @arroz, @lentejas, @papas, @tomate, @cebolla, @manzana, @platanos]
+            array.burbuja_for()
+            array.sort()
+            array.ordenarEach()
+       
         end
     end
     
