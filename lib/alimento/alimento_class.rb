@@ -93,3 +93,35 @@ class GrupoAlimento < Alimentos
     
     end
 end
+
+class Array
+
+    def burbuja_for
+        tamaño = self.length
+        for j in (tamaño-1).downto(0)
+            for i in 0..(j-1)
+                if self[i] > self[i+1]
+                    aux = self[i+1]
+                    self[i+1] = self[i]
+                    self[i] = aux
+                end
+            end
+        end
+        self
+    end
+    
+    
+    def ordenarEach
+        (self.length-1).downto(0).each do |j|
+            (0..j-1).each do |i|
+                if self[i] > self[i+1]
+                    aux = self[i+1]
+                    self[i+1] = self[i]
+                    self[i] = aux
+                end
+            end
+        end
+        self
+    end
+    
+end

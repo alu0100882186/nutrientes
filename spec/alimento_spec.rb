@@ -1,6 +1,11 @@
+require 'coveralls'
+Coveralls.wear!
+
 require './lib/alimento/alimento_class'
 require './lib/alimento/lista'
+require 'benchmark'
 #require 'spec_helper'
+
 
 
 describe GrupoAlimento do
@@ -32,6 +37,7 @@ describe GrupoAlimento do
         @Lista = List.new()
         @NodoInicial = Node.new(@leche_grupo, @yogurt_grupo, @huevo_frito_grupo)
     end
+    
     
     describe "Almacenamiento correcto de los alimentos" do
         it "Se almacena correctamente el nombre del alimento" do
@@ -151,6 +157,20 @@ describe GrupoAlimento do
         end
         it "Comparacion =" do
             expect(@lechevaca == @platanos).to eq(false)
+        end
+    end
+    
+    describe "Pruebas de ordenación" do 
+        it "prueba de ordenación utilizando benchmark" do
+            array = [@huevo_frito, @lechevaca, @yogurt, @cerdo, @ternera, @pollo, @bacalao, @atun, @salmon, @aceiteoliva, @chocolate, @azucar, @arroz, @lentejas, @papas, @tomate, @cebolla, @manzana, @platanos]
+            
+            n = 100000000
+            Benchmark.bm(1) do |x|
+                x.report("for"){ array.burbuja_for() }
+                x.report("sort"){ array.sort()  }
+                x.report("each"){ array.ordenarEach() }
+            end
+       
         end
     end
     
