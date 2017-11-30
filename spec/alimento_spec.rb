@@ -1,10 +1,11 @@
 require 'coveralls'
 Coveralls.wear!
-
 require './lib/alimento/alimento_class'
 require './lib/alimento/lista'
 require 'benchmark'
 #require 'spec_helper'
+
+
 
 
 
